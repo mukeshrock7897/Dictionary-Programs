@@ -1,0 +1,94 @@
+1-- Find mirror characters in dictionary
+
+def mirrorChars(input,k):
+    original = 'abcdefghijklmnopqrstuvwxyz'
+    reverse = 'zyxwvutsrqponmlkjihgfedcba'
+    dictChars = dict(zip(original,reverse))
+    prefix = input[0:k-1] 
+    suffix = input[k-1:] 
+    mirror = ''
+    for i in range(0,len(suffix)):
+        mirror = mirror + dictChars[suffix[i]]
+    print (prefix+mirror) 
+input = 'paradox'
+k = 3
+mirrorChars(input,k) 
+
+
+Output
+
+paizwlc
+
+
+
+2--  Python counter and dictionary intersection example (Make a string using deletion and rearrangement)
+
+from collections import Counter
+str1 = 'ABHISHEKsinGH'
+str2 = 'gfhfBHkooIHnfndSHEKsiAnG'
+dict1 = Counter(str1)
+dict2 = Counter(str2)
+result=dict1&dict2
+if result==dict1:
+    print("Possible")
+else:
+    print("Not Possible")
+    
+
+Output
+
+Possiable
+
+
+3--dictionary, set and counter to check if frequencies can become same
+
+
+from collections import Counter
+input ="xyyzz"
+dict=Counter(input)
+same = set(dict.values())
+if len(same)==1:
+    print("Yes")
+elif len(same)==2:
+    if list(same)[0]==1:
+        print("Yes")
+    else:
+        print("No")
+        
+
+Output
+
+Yes
+
+
+4-- Possible Words using given characters in Python
+
+def charCount(word):
+    import pdb;pdb.set_trace()
+    dict = {}
+    for i in word:
+        dict[i] = dict.get(i, 0) + 1
+    return dict
+
+def possible_words(lwords, charSet): 
+    for word in lwords: 
+        flag = 1
+        chars = charCount(word) 
+        for key in chars: 
+            if key not in charSet: 
+                flag = 0
+            else: 
+                if charSet.count(key) != chars[key]: 
+                    flag = 0
+        if flag == 1: 
+            print(word)
+if __name__ == "__main__": 
+    input = ['goo', 'bat', 'me', 'eat', 'goal', 'boy', 'run'] 
+    charSet = ['e', 'o', 'b', 'a', 'm', 'g', 'l'] 
+    possible_words(input, charSet) 
+
+
+Output
+
+me
+goal
